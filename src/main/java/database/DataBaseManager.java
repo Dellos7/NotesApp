@@ -13,7 +13,7 @@ public class DataBaseManager {
 
     public static final String LOCAL_BD = "local";
     public static final String HEROKU_BD = "heroku";
-    public static NoteDao noteDao = new NoteDao( DataBaseManager.LOCAL_BD ) ;
+    public static NoteDao noteDao;
 
     private DataBaseManager() {}
 

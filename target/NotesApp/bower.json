@@ -1,0 +1,27 @@
+{
+  "name": "EjemploAngularJS",
+  "description": "Ejemplo con Angular JS y Node",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "angular",
+    "bootstrap",
+    "javascript"
+  ],
+  "authors": [
+    "David López"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular": "^1.4.9"
+  }
+}
