@@ -1,2 +1,6 @@
-application/MiAplicacion.class
+dao/NoteDao.class
 services/NotesREST.class
+application/MiAplicacion.class
+model/data/NoteUtils.class
+model/data/Note.class
+database/DataBaseManager.class

@@ -1,2 +1,6 @@
+/Users/david/Documents/Programación/REST/NotesApp/src/main/java/dao/NoteDao.java
 /Users/david/Documents/Programación/REST/NotesApp/src/main/java/services/NotesREST.java
+/Users/david/Documents/Programación/REST/NotesApp/src/main/java/database/DataBaseManager.java
+/Users/david/Documents/Programación/REST/NotesApp/src/main/java/model/data/Note.java
+/Users/david/Documents/Programación/REST/NotesApp/src/main/java/model/data/NoteUtils.java
 /Users/david/Documents/Programación/REST/NotesApp/src/main/java/application/MiAplicacion.java

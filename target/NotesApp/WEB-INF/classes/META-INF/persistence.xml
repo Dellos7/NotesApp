@@ -21,7 +21,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
             <!-- Indicamos la BBDD -->
             <property name="eclipselink.target-database" value="MySQL"/>
             <!-- Cada vez que se ejecuta la aplicación borramos todas las tablas -->
-            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
             <!-- Detalle de la información que muestra EclipseLink -->
             <property name="eclipselink.logging.level" value="FINE"/>
             <property name="eclipselink.logging.level.sql" value="FINE"/>
@@ -38,13 +38,13 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-54-225-199-245.compute-1.amazonaws.com:5432/d9k7l59r1nosvj" />
-            <property name="javax.persistence.jdbc.user" value="khnvdvvfexedzl"/>
-            <property name="javax.persistence.jdbc.password" value="vlNxunxi4aDRrzvxIGTya3HVNM" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-54-204-20-164.compute-1.amazonaws.com:5432/d50c682vbd16i9?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory" />
+            <property name="javax.persistence.jdbc.user" value="uobelnhfmqqxnk"/>
+            <property name="javax.persistence.jdbc.password" value="s3QStVQN_ElZkhokgN-912SRS_" />
 
             <!-- Propiedades particulares de eclipselink -->
             <property name="eclipselink.target-database" value="PostgreSQL"/>
-            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
             <property name="eclipselink.logging.level" value="FINE"/>
             <property name="eclipselink.logging.level.sql" value="FINE"/>
             <property name="eclipselink.logging.level.cache" value="FINE"/>

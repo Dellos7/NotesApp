@@ -1,0 +1,33 @@
+
+.navbar-margin-top {
+    margin-top: 7%;
+}
+
+.poiret-one-font {
+    font-family: 'Poiret One', cursive;
+}
+
+.center-placeholder::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.center-placeholder:-moz-placeholder { /* Firefox 18- */
+    text-align: center;
+}
+
+.center-placeholder::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;
+}
+
+.center-placeholder:-ms-input-placeholder {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-error-label {
+    color: #a94442;
+    padding-top: 5px;
+}
