@@ -40,7 +40,7 @@ app.controller( "MyController", [ "$scope", "$http", function( $scope, $http ) {
 
     $scope.deleteNote = function( noteId ) {
         console.log( 'Note id: ' + noteId );
-        $http.delete( "http://dnotesapp.herokuapp.com/rest/notes" + noteId )
+        $http.delete( "http://dnotesapp.herokuapp.com/rest/notes/" + noteId )
             .then( function(res) {
                 console.log(res);
                 removeNoteFromArray( noteId );
