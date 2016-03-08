@@ -7,7 +7,8 @@ app.controller( "MyController", [ "$scope", "$http", function( $scope, $http ) {
     $scope.newText = "";
 
     $scope.retrieveNotes = function() {
-        $http.get( "http://dnotesapp.herokuapp.com/rest/notes" )
+        //$http.get( "http://dnotesapp.herokuapp.com/rest/notes" )
+        $http.get( "http://localhost:8080/rest/notes" )
             .then( function(res) {
                 //console.log(res);
                 if( Object.prototype.toString.call( res.data.notes.note ) === '[object Array]' ) {
@@ -24,7 +25,8 @@ app.controller( "MyController", [ "$scope", "$http", function( $scope, $http ) {
     $scope.addNote = function() {
         if( $scope.newTitle != "" ) {
             var note = { 'note': { title: $scope.newTitle, text: $scope.newText  } };
-            $http.post( "http://dnotesapp.herokuapp.com/rest/notes", note )
+            //$http.post( "http://dnotesapp.herokuapp.com/rest/notes", note )
+            $http.post( "http://localhost:8080/rest/notes", note )
                 .then( function(res) {
                     console.log(res);
                     $scope.data.push( res.data.note );
@@ -40,7 +42,8 @@ app.controller( "MyController", [ "$scope", "$http", function( $scope, $http ) {
 
     $scope.deleteNote = function( noteId ) {
         console.log( 'Note id: ' + noteId );
-        $http.delete( "http://dnotesapp.herokuapp.com/rest/notes/" + noteId )
+        //$http.delete( "http://dnotesapp.herokuapp.com/rest/notes/" + noteId )
+        $http.delete( "http://localhost:8080/rest/notes/" + noteId )
             .then( function(res) {
                 console.log(res);
                 removeNoteFromArray( noteId );

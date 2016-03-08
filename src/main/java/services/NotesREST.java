@@ -1,5 +1,6 @@
 package services;
 
+import annotations.AuthenticationRequired;
 import database.DataBaseManager;
 import model.data.Note;
 import model.data.NoteUtils;
@@ -20,11 +21,12 @@ public class NotesREST {
 
     public NotesREST() {
         super();
-        DataBaseManager.setDataBase( DataBaseManager.HEROKU_BD );
+        DataBaseManager.setDataBase( DataBaseManager.LOCAL_BD );
     }
 
     @GET
     @Produces( MediaType.APPLICATION_JSON )
+    @AuthenticationRequired
     public Response getNotes() {
         List<Note> notes = DataBaseManager.getNotes();
         Note[] notesArray = NoteUtils.fromListObjectToArray( notes );
@@ -34,6 +36,7 @@ public class NotesREST {
     @POST
     @Consumes( MediaType.APPLICATION_JSON )
     @Produces( MediaType.APPLICATION_JSON )
+    @AuthenticationRequired
     public Response newNote( Note note ) {
         DataBaseManager.newNote( note );
         UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
@@ -43,6 +46,7 @@ public class NotesREST {
 
     @DELETE
     @Path("{id}")
+    @AuthenticationRequired
     public Response deleteNote( @PathParam( "id" ) Long id  ) {
         if( id != null ) {
             if( DataBaseManager.deleteNote( id ) ) {

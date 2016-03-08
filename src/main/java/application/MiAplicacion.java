@@ -1,5 +1,6 @@
 package application;
 
+import filters.FilterAuthentication;
 import org.glassfish.jersey.jettison.JettisonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 
@@ -12,6 +13,7 @@ public class MiAplicacion extends ResourceConfig {
     public MiAplicacion() {
         packages("services");
         register(new JettisonFeature());
+        register(FilterAuthentication.class );
         property(JsonGenerator.PRETTY_PRINTING, true);
     }
 }

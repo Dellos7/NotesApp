@@ -1,6 +1,9 @@
+filters/FilterAuthentication.class
 dao/NoteDao.class
 services/NotesREST.class
+authentication/AuthenticationService.class
 application/MiAplicacion.class
 model/data/NoteUtils.class
 model/data/Note.class
+annotations/AuthenticationRequired.class
 database/DataBaseManager.class

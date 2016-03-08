@@ -34,6 +34,10 @@
           <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-util:9.1.0.v20131115" />
           <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-io:9.1.0.v20131115" />
           <element id="library" level="project" name="Maven: postgresql:postgresql:9.1-901-1.jdbc4" />
+          <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt:0.6.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.4.2" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.4.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.4.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">
