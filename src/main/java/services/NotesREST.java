@@ -1,12 +1,15 @@
 package services;
 
-import annotations.AuthenticationRequired;
+import annotations.Secured;
+import authentication.AuthenticationService;
 import database.DataBaseManager;
 import model.data.Note;
 import model.data.NoteUtils;
+import model.data.beans.UserInfo;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 
@@ -26,7 +29,7 @@ public class NotesREST {
 
     @GET
     @Produces( MediaType.APPLICATION_JSON )
-    @AuthenticationRequired
+    @Secured( role = Secured.Role.user )
     public Response getNotes() {
         List<Note> notes = DataBaseManager.getNotes();
         Note[] notesArray = NoteUtils.fromListObjectToArray( notes );
@@ -36,7 +39,7 @@ public class NotesREST {
     @POST
     @Consumes( MediaType.APPLICATION_JSON )
     @Produces( MediaType.APPLICATION_JSON )
-    @AuthenticationRequired
+    @Secured( role = Secured.Role.user )
     public Response newNote( Note note ) {
         DataBaseManager.newNote( note );
         UriBuilder uriBuilder = uriInfo.getAbsolutePathBuilder();
@@ -46,7 +49,7 @@ public class NotesREST {
 
     @DELETE
     @Path("{id}")
-    @AuthenticationRequired
+    @Secured( role = Secured.Role.user )
     public Response deleteNote( @PathParam( "id" ) Long id  ) {
         if( id != null ) {
             if( DataBaseManager.deleteNote( id ) ) {
@@ -62,8 +65,25 @@ public class NotesREST {
     @GET
     @Path( "test" )
     @Produces( MediaType.TEXT_PLAIN )
+    @Secured( role = Secured.Role.admin )
     public Response test() {
         return Response.ok( "test!" ).build();
+    }
+
+    @GET
+    @Path( "token" )
+    @Produces( MediaType.TEXT_PLAIN )
+    public Response token() {
+        String token = "no-token";
+        try {
+            UserInfo userInfo = new UserInfo(); //Here we would retrieve the user from the database
+            userInfo.setUsername( "zira" );
+            userInfo.setUserRole( Secured.Role.user );
+            token = AuthenticationService.generateToken( userInfo );
+        } catch (IOException e) {
+            return Response.status( Response.Status.INTERNAL_SERVER_ERROR ).build();
+        }
+        return Response.ok( token ).build();
     }
 
 }

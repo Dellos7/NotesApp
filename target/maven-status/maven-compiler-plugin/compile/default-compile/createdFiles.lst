@@ -4,6 +4,8 @@ services/NotesREST.class
 authentication/AuthenticationService.class
 application/MiAplicacion.class
 model/data/NoteUtils.class
+model/data/beans/UserInfo.class
+annotations/Secured.class
 model/data/Note.class
-annotations/AuthenticationRequired.class
 database/DataBaseManager.class
+annotations/Secured$Role.class
