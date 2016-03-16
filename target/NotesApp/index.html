@@ -33,7 +33,7 @@
                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>-->
             <form class="navbar-form navbar-right" role="search">
-                <div id="loginElems"  class="hidden">
+                <div id="loginElems">
                     <div class="form-group">
                         <input type="text" class="form-control" name="username" placeholder="Username" ng-model="username">
                     </div>
@@ -43,8 +43,12 @@
                     <button type="submit" class="btn btn-success" ng-click="login()"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Sign In</button>
                     <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span>&nbsp;Sing Up</button>
                 </div>
-                <div id="loginInfo" style="height: 100%">
-                    <label>Signed in as </label>
+                <div id="loginInfo" ng-if="currentUser">
+                    <div class="form-group">
+                        <p class="text-white text-vertical-centered">Signed in as <span class="text-blue">{{ currentUser.username }}</span> </p>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-error" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Log out</button>
                 </div>
             </form>
         </div>

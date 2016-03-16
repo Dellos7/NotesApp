@@ -30,16 +30,43 @@ app.controller( "MyController", [ "$scope", "$http", function( $scope, $http ) {
 
     $scope.addNote = function() {
         if( $scope.newTitle != "" ) {
-            var note = { 'note': { title: $scope.newTitle, text: $scope.newText  } };
+            var note = { 'note': { 'title': $scope.newTitle, 'text': $scope.newText  } };
             //$http.post( "https://dnotesapp.herokuapp.com/rest/notes", note )
             //$http.post( "http://localhost:8080/rest/notes", note )
-            $http.post( "https://localhost:8443/rest/notes", note )
+            /*$http.post( "https://localhost:8443/rest/notes", note )
                 .then( function(res) {
                     console.log(res);
                     $scope.data.push( res.data.note );
                     removeCssErrorClass();
                 }, function(data) {
                     alert('Error!');
+            });*/
+            /*$.ajax({
+                url: 'https://localhost:8443/rest/notes',
+                type: 'POST',
+                data: note,
+                headers: {
+                    "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXJhIiwicm9sZSI6InVzZXIifQ.HITQa83LvlnGwna7e8YtZhr4YRqSIt0BQR2XYpqVTAKIJ_-9AY_ifssiZNONZZrAKAWfY92xbmT1eXbVJlIcIQ',
+                },
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });*/
+            /*$http.post( 'https://localhost:8443/rest/notes',
+                {
+                    data: note,
+                    headers: { 'Authorization': 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXJhIiwicm9sZSI6InVzZXIifQ.HITQa83LvlnGwna7e8YtZhr4YRqSIt0BQR2XYpqVTAKIJ_-9AY_ifssiZNONZZrAKAWfY92xbmT1eXbVJlIcIQ' }
+            });*/
+            $http({
+                method: 'POST',
+                url: 'https://localhost:8443/rest/notes',
+                headers: {
+                    'Authorization': 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXJhIiwicm9sZSI6InVzZXIifQ.HITQa83LvlnGwna7e8YtZhr4YRqSIt0BQR2XYpqVTAKIJ_-9AY_ifssiZNONZZrAKAWfY92xbmT1eXbVJlIcIQ'
+                },
+                data: note
             });
         }
         else {

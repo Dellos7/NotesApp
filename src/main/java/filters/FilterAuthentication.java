@@ -26,6 +26,7 @@ public class FilterAuthentication implements ContainerRequestFilter {
 
         //We get the token sent in the header
         String authToken = containerRequestContext.getHeaderString( AUTHENTICATION_HEADER );
+        System.out.println( authToken );
 
         try {
             if( authToken == null || !AuthenticationService.checkAuthentication( authToken, role ) ) {

@@ -1,14 +1,15 @@
 var app = angular.module( "app", [] );
 
 app.controller( "MyController", [ "$scope", "$http", function( $scope, $http ) {
+
+    var scope = $scope;
+
     $scope.filter = "";
     $scope.data = [];
     $scope.newTitle = "";
     $scope.newText = "";
     $scope.username = "";
     $scope.password = "";
-
-    $scope.navbarUsername = null;
 
     $scope.retrieveNotes = function() {
         //$http.get( "https://dnotesapp.herokuapp.com/rest/notes" )
@@ -29,16 +30,35 @@ app.controller( "MyController", [ "$scope", "$http", function( $scope, $http ) {
 
     $scope.addNote = function() {
         if( $scope.newTitle != "" ) {
-            var note = { 'note': { title: $scope.newTitle, text: $scope.newText  } };
+            var note = { 'note': { 'title': $scope.newTitle, 'text': $scope.newText  } };
             //$http.post( "https://dnotesapp.herokuapp.com/rest/notes", note )
             //$http.post( "http://localhost:8080/rest/notes", note )
-            $http.post( "https://localhost:8443/rest/notes", note )
+            /*$http.post( "https://localhost:8443/rest/notes", note )
                 .then( function(res) {
                     console.log(res);
                     $scope.data.push( res.data.note );
                     removeCssErrorClass();
                 }, function(data) {
                     alert('Error!');
+            });*/
+            /*$.ajax({
+                url: 'https://localhost:8443/rest/notes',
+                type: 'POST',
+                data: note,
+                headers: {
+                    "Authorization": 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXJhIiwicm9sZSI6InVzZXIifQ.HITQa83LvlnGwna7e8YtZhr4YRqSIt0BQR2XYpqVTAKIJ_-9AY_ifssiZNONZZrAKAWfY92xbmT1eXbVJlIcIQ',
+                },
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });*/
+            $http.post( 'https://localhost:8443/rest/notes',
+                {
+                    data: note,
+                    headers: { 'Authorization': 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aXJhIiwicm9sZSI6InVzZXIifQ.HITQa83LvlnGwna7e8YtZhr4YRqSIt0BQR2XYpqVTAKIJ_-9AY_ifssiZNONZZrAKAWfY92xbmT1eXbVJlIcIQ' }
             });
         }
         else {
@@ -81,18 +101,14 @@ app.controller( "MyController", [ "$scope", "$http", function( $scope, $http ) {
 
     var loginSuccess = function( res ) {
         console.log( 'token - ' + res );
-        $scope.navbarUsername = 'username';
+        scope.currentUser = { username: 'david' };
+        console.log( $scope.currentUser.username );
+        $( '#loginElems' ).addClass( 'hidden' );
+        scope.$apply();
     }
 
     var loginError = function( error ) {
         alert( 'Incorrect username or password' );
-    }
-
-    $scope.checkNavbarUsername = function() {
-        if( $scope.navbarUsername == null ) {
-            return false;
-        }
-        return true;
     }
 
     $scope.clear = function() {
