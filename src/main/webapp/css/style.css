@@ -31,3 +31,18 @@
     color: #a94442;
     padding-top: 5px;
 }
+
+.text-white {
+    color: white;
+}
+
+.text-blue {
+    color: #00b3ee;
+}
+
+.text-vertical-centered {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    margin: 0;
+}

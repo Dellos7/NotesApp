@@ -53,9 +53,7 @@ public class NoteDao {
     public boolean deleteNote( Long id ) {
         Note note = getNote( id );
         if( note != null ) {
-            tx.begin();
-            em.remove( note );
-            tx.commit();
+            deleteNote( note );
             return true;
         }
         return false;

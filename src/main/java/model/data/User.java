@@ -10,19 +10,21 @@ import javax.xml.bind.annotation.XmlType;
  * Created by david on 9/3/16.
  */
 @XmlRootElement
-@XmlType( propOrder = { "id", "username", "password", "role" } )
+@XmlType( propOrder = { "id", "username", "role" } )
 @Entity
 @Table( name = "users" )
 @NamedQueries(value = {
-        @NamedQuery(name = User.RETRIEVE_ALL, query = "SELECT u FROM User u"),
-        @NamedQuery(name = User.RETRIEVE_BY_ID, query = "SELECT u FROM User u WHERE u.id = :id"),
-        @NamedQuery( name = User.RETRIEVE_BY_USERNAME, query = "SELECT u FROM User u WHERE u.username = :username" )
+        @NamedQuery( name = User.RETRIEVE_ALL, query = "SELECT u FROM User u"),
+        @NamedQuery( name = User.RETRIEVE_BY_ID, query = "SELECT u FROM User u WHERE u.id = :id"),
+        @NamedQuery( name = User.RETRIEVE_BY_USERNAME, query = "SELECT u FROM User u WHERE u.username = :username" ),
+        @NamedQuery( name =  User.CHECK_PASSWORD, query = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password" )
 })
 public class User {
 
     public static final String RETRIEVE_ALL = "Retrieve all users";
     public static final String RETRIEVE_BY_ID = "Retrieve user by id";
     public static final String RETRIEVE_BY_USERNAME = "Retrieve user by username";
+    public static final String CHECK_PASSWORD = "Check password";
 
     @Id
     @GeneratedValue( strategy =  GenerationType.AUTO )

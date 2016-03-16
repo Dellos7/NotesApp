@@ -1,6 +1,7 @@
 package authentication;
 
 import annotations.Secured;
+import database.UsersDataBaseManager;
 import io.jsonwebtoken.*;
 import model.data.beans.UserInfo;
 import sun.misc.BASE64Decoder;
@@ -36,7 +37,7 @@ public class AuthenticationService {
     }
 
     public static String login( String username, String encodedPassword ) {
-        UserInfo userInfo = new UserInfo(); //retrieve user info from bd using username and encodedPassword
+        UserInfo userInfo = UsersDataBaseManager.getUserCheckingPassword( username, encodedPassword );
         String token = null;
         if( userInfo.isAuthenticated() ) {
             try {

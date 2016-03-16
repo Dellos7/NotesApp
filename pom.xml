@@ -90,7 +90,7 @@
         <finalName>NotesApp</finalName>
         <!-- Necesario para hacer el build con Jetty (jetty:run) -->
         <plugins>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.1.0.v20131115</version>
@@ -100,7 +100,7 @@
                         <contextPath>/</contextPath>
                     </webAppConfig>
                 </configuration>
-            </plugin>
+            </plugin>-->
             <!-- Compilador de Maven -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -132,6 +132,17 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <!--  Utiliamos el jetty-maven-plugin (necesario para hacer mvn jetty:run) utilizando los ficheros de configuración
+                    de conexión SSL para permitir establecer una conexión segura al servidor -->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <configuration>
+                    <jettyXml>
+                        ${project.basedir}/src/main/resources/jetty.xml,${project.basedir}/src/main/resources/jetty-http.xml,${project.basedir}/src/main/resources/jetty-ssl.xml,${project.basedir}/src/main/resources/jetty-https.xml
+                    </jettyXml>
+                </configuration>
             </plugin>
         </plugins>
     </build>
